@@ -2,9 +2,9 @@
 """Add tuples"""
 
 
-from typing import Union
+from typing import Tuple
 
 
-def to_kv(k: str, v: float | int) -> Union[str, float]:
+def to_kv(k: str, v: float | int) -> Tuple[str, float]:
     """tuple"""
     return (k, v * v)
