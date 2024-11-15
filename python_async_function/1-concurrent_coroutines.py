@@ -11,7 +11,7 @@ task_wait_random = basic_async_syntax.wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
-    """Spawn wait_random n times with max_delay and return delays in ascending order."""
+    """Spawn wait_random n times with max_delay"""
     delays = []
     # Spawn `wait_random` n times and gather results
     tasks = [task_wait_random(max_delay) for _ in range(n)]
