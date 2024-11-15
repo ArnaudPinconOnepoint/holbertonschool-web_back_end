@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Documented"""
 
 import asyncio
 import importlib
@@ -18,7 +19,6 @@ async def task_wait_n(n: int, max_delay: int) -> list[float]:
         heapq.heappush(delays, delay)  # Use heapq to keep delays in order
 
     return [heapq.heappop(delays) for _ in range(n)]  # Pop in ascending order
-
 
 # if __name__ == "__main__":
 #     n = 5
