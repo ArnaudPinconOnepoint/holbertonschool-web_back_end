@@ -4,12 +4,13 @@
 import asyncio
 import importlib
 import heapq
+from typing import List
 
 basic_async_syntax = importlib.import_module("0-basic_async_syntax")
 task_wait_random = basic_async_syntax.wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> list[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """Spawn wait_random n times with max_delay and return delays in ascending order."""
     delays = []
     # Spawn `wait_random` n times and gather results
