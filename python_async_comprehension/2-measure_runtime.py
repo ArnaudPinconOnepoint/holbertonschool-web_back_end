@@ -11,7 +11,8 @@ async_comprehension = basic_async_syntax.async_comprehension
 
 # The async_comprehension coroutine
 async def measure_runtime() -> float:
-    """Execute async_comprehension four times in parallel and measure total runtime."""
+    """Execute async_comprehension four times in parallel
+    and measure total runtime."""
     start_time = time.perf_counter()
 
     # Run async_comprehension four times in parallel
