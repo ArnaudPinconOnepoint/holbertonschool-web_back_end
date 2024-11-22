@@ -1,2 +1,2 @@
 // 0-list_databases
-printjson(db.adminCommand('listDatabases'));
+printjson(db.adminCommand('show dbs'));
