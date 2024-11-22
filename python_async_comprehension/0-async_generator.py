@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+"""Documented"""
+
 import asyncio
 import random
 
