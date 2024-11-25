@@ -1,0 +1,5 @@
+// Connect to the database (use the db name passed as an option)
+use my_db;  // Replace 'dbName' with the actual database name
+
+// List all documents in the 'school' collection
+db.school.find().forEach(printjson);
