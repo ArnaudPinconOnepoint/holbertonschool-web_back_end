@@ -1,5 +1,8 @@
-// my comment
-db.createCollection("school");
-db.school.insertOne({
-  name: "Holberton school",
-});
+// Insert a document into the 'school' collection
+const existingSchool = db.school.findOne({ name: "Holberton school" });
+
+if (!existingSchool) {
+  db.school.insertOne({
+    name: "Holberton school",
+  });
+}
