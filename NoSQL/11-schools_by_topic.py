@@ -4,9 +4,10 @@
 from pymongo import MongoClient
 
 
-def update_topics(mongo_collection, name, topics):
+def schools_by_topic(mongo_collection, topic):
     """
     Lists all documents in a specified MongoDB collection.
     """
     # Insert the document into the collection
-    mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})
+    schools = list(mongo_collection.find({"topics": topic}))
+    return schools
