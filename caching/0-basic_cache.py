@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """ BaseCaching module
 """
-import importlib
-
-base_caching = importlib.import_module("base_caching")
+from base_caching import BaseCaching
     
 
-class BasicCache(base_caching):
+class BasicCache(BaseCaching):
     """ Base cache class """
 
     def __init__(self):
