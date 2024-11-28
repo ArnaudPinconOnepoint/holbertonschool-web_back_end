@@ -38,30 +38,29 @@ class Server:
                 i: dataset[i] for i in range(len(dataset))
             }
         return self.__indexed_dataset
-    
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """ Get page """
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
-        start_index, end_index = self.index_range(page, page_size)
-        dataset = self.dataset()
-        return dataset[start_index:end_index]
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        assert index >= 0 and index < len(self.dataset())
-        
-        page = index // page_size
-        reste = index % page_size
+        assert index is not None and 0 <= index < len(self.indexed_dataset()), "Invalid index"
 
-        rangeIndex = self.get_page(page, page_size)
-        new_index = rangeIndex[0]
-        next_index = rangeIndex[1]+1 if rangeIndex[1] < len(self.dataset()) - 1 else None
+        indexed_dataset = self.indexed_dataset()
+        data = []
+        current_index = index
+        collected = 0
+        max_index = max(indexed_dataset.keys())
+
+        while current_index <= max_index and collected < page_size:
+            if current_index in indexed_dataset:
+                data.append(indexed_dataset[current_index])
+                collected += 1
+            current_index += 1
+
+        next_index = current_index if current_index <= max_index else None
 
         result = {
-            "index": new_index,
+            "index": index,
             "next_index": next_index,
             "page_size": page_size,
-            "data": self.dataset()[new_index:next_index-1],
+            "data": data,
         }
 
         return result
