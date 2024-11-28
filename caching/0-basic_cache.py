@@ -34,6 +34,10 @@ class BaseCaching():
 
 class BasicCache(BaseCaching):
     """ Base cache class """
+
+    def __init__(self):
+        super().__init__()
+
     def put(self, key, item):
         assert key is None or item is None
         self.cache_data[key] = item
