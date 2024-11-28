@@ -11,13 +11,14 @@ class BasicCache(BaseCaching):
         """ 
         Add an item to the cache.
         """
-        assert key is None or item is None
+        if key is None or item is None:
+            return
+        # Store the item in the cache_data dictionary
         self.cache_data[key] = item
 
 
     def get(self, key):
-        """
-        Get an item with a key
-        """
-        assert key is None or self.cache_data[key] is None
+        """ get """
+        if key is None or key not in self.cache_data:
+            return None
         return self.cache_data[key]
