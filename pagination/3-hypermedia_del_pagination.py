@@ -40,7 +40,9 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        assert index is not None and 0 <= index < len(self.indexed_dataset()), "Invalid index"
+        """Dataset indexed by sorting position, starting at 0"""
+        assert index is not None
+        assert 0 <= index < len(self.indexed_dataset())
 
         indexed_dataset = self.indexed_dataset()
         data = []
