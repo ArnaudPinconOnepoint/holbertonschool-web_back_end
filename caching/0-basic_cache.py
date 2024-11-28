@@ -2,7 +2,7 @@
 """ BaseCaching module
 """
 from base_caching import BaseCaching
-    
+
 
 class BasicCache(BaseCaching):
     """ Base cache class """
@@ -15,7 +15,6 @@ class BasicCache(BaseCaching):
             return
         # Store the item in the cache_data dictionary
         self.cache_data[key] = item
-
 
     def get(self, key):
         """ 
