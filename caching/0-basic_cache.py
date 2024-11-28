@@ -32,7 +32,7 @@ class BaseCaching():
         raise NotImplementedError("get must be implemented in your cache class")
     
 
-class BaseCache(BaseCaching):
+class BasicCache(BaseCaching):
     """ Base cache class """
     def put(self, key, item):
         assert key is None or item is None
