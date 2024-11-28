@@ -40,7 +40,9 @@ class Server:
         total_pages = math.ceil(len(self.dataset()) / page_size)
         next_page = page + 1 if page < total_pages else None
         prev_page = page - 1 if page > 1 else None
-        dico = { "page_size": page_size, "page": page, "data": self.dataset(), "next_page": next_page, "prev_page": prev_page, "total_pages": total_pages}
+        dico = { "page_size": page_size, "page": page, 
+                "data": self.dataset(), "next_page": next_page, 
+                "prev_page": prev_page, "total_pages": total_pages}
         return dico
 
     def index_range(page: int, page_size: int) -> tuple[int, int]:
