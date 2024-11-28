@@ -33,17 +33,23 @@ class Server:
         dataset = self.dataset()
         return dataset[start_index:end_index]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        """ Return a dictionary """
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
-        total_pages = math.ceil(len(self.dataset()) / page_size)
-        next_page = page + 1 if page < total_pages else None
-        prev_page = page - 1 if page > 1 else None
-        dico = { "page_size": page_size, "page": page,
-                "data": self.dataset(), "next_page": next_page,
-                "prev_page": prev_page, "total_pages": total_pages}
-        return dico
+def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+    """Return a dictionary containing pagination info."""
+    assert isinstance(page, int) and page > 0
+    assert isinstance(page_size, int) and page_size > 0
+    total_pages = math.ceil(len(self.dataset()) / page_size)
+    next_page = page + 1 if page < total_pages else None
+    prev_page = page - 1 if page > 1 else None
+    result = {
+        "page_size": page_size,
+        "page": page,
+        "data": self.dataset()[page * page_size - page_size: page * page_size],  # Liste de données pour la page
+        "next_page": next_page,
+        "prev_page": prev_page,
+        "total_pages": total_pages,
+    }
+    return result
+
 
     def index_range(page: int, page_size: int) -> tuple[int, int]:
         """Return a tuple"""
