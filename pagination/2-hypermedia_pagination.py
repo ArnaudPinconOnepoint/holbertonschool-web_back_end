@@ -43,13 +43,12 @@ class Server:
         result = {
             "page_size": page_size,
             "page": page,
-            "data": self.dataset()[page * page_size - page_size: page * page_size],  # Liste de données pour la page
+            "data": self.dataset()[page * page_size - page_size: page * page_size],
             "next_page": next_page,
             "prev_page": prev_page,
             "total_pages": total_pages,
         }
         return result
-
 
     def index_range(page: int, page_size: int) -> tuple[int, int]:
         """Return a tuple"""
