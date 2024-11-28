@@ -30,7 +30,7 @@ def put(self, key, item):
     self.cache_data[key] = item
 
 
-def get(self, key):
-    """ get """
-    assert key is None or self.cache_data[key] is None
-    return self.cache_data[key]
+    def get(self, key):
+        """ get """
+        assert key is None or self.cache_data[key] is None
+        return self.cache_data[key]
