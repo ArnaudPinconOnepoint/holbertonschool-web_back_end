@@ -21,7 +21,7 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
         # Store the item in the cache_data dictionary
-        if (len(self.cache_data) > BaseCaching.MAX_ITEMS):
+        if (len(self.cache_data) == BaseCaching.MAX_ITEMS):
             oldest_key = next(iter(self.cache_data))
             del self.cache_data[oldest_key]
             print(f"DISCARD:\n{oldest_key}")
