@@ -12,6 +12,7 @@ class FIFOCache(BaseCaching):
         Initialization of FIFO Cache
         """
         super().__init__()
+        self.keys_order = []  # To maintain the order of keys for FIFO.
 
 
     def put(self, key, item):
@@ -22,7 +23,7 @@ class FIFOCache(BaseCaching):
             return
         # Store the item in the cache_data dictionary
         if (len(self.cache_data) >= BaseCaching.MAX_ITEMS):
-            oldest_key = next(iter(self.cache_data))
+            oldest_key = self.keys_order.pop(0)
             del self.cache_data[oldest_key]
             print(f"DISCARD:\n{oldest_key}")
         self.cache_data[key] = item
