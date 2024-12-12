@@ -22,17 +22,19 @@ class LRUCache(BaseCaching):
         # If the key already exists, update its value and reorder
         if key in self.cache_data:
             self.cache_data[key] = item
+            self.keys_order.remove(key)
+            self.keys_order.insert(0, key)
             return
 
         # Add the new key-value pair
         self.cache_data[key] = item
-        self.keys_order.append(key)
+        self.keys_order.insert(0, key)
 
-        # If the cache exceeds MAX_ITEMS, evict the Least Recently Used
+        # If the cache exceeds MAX_ITEMS, evict the LRU item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            last_key = self.keys_order.pop(-1)
-            del self.cache_data[last_key]
-            print(f"DISCARD: {last_key}")
+            lru_key = self.keys_order.pop(-1)
+            del self.cache_data[lru_key]
+            print(f"DISCARD: {lru_key}")
 
     def get(self, key):
         """
@@ -40,8 +42,9 @@ class LRUCache(BaseCaching):
 
         Return None if the key is None or does not exist in the cache.
         """
-        value = self.cache_data.get(key, None)
-        if value is not None:
+        if key in self.cache_data:
             self.keys_order.remove(key)
             self.keys_order.insert(0, key)
-        return self.cache_data.get(key, None)
+            return self.cache_data[key]
+        return None
+
