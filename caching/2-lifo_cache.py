@@ -28,9 +28,9 @@ class LIFOCache(BaseCaching):
         self.cache_data[key] = item
         self.keys_order.append(key)
 
-        # If the cache exceeds MAX_ITEMS, evict the first added key
+        # If the cache exceeds MAX_ITEMS, evict the last added key
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            last_key = self.keys_order.pop(-1)
+            last_key = self.keys_order.pop(-2)
             del self.cache_data[last_key]
             print(f"DISCARD: {last_key}")
 
