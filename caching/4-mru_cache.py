@@ -23,12 +23,12 @@ class MRUCache(BaseCaching):
         if key in self.cache_data:
             self.cache_data[key] = item
             self.keys_order.remove(key)
-            self.keys_order.append(key)
+            self.keys_order.insert(0, key)
             return
 
         # Add the new key-value pair
         self.cache_data[key] = item
-        self.keys_order.append(key)
+        self.keys_order.insert(0, key)
 
         # If the cache exceeds MAX_ITEMS, evict the MRU item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
@@ -44,6 +44,6 @@ class MRUCache(BaseCaching):
         """
         if key in self.cache_data:
             self.keys_order.remove(key)
-            self.keys_order.append(key)
+            self.keys_order.insert(0, key)
             return self.cache_data[key]
         return None
