@@ -8,13 +8,13 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         """Initialize the class."""
         super().__init__()
-        self.keys_order = []  # Keep track of the order of keys for FIFO.
+        self.keys_order = []  # Keep track of the order of keys for LIFO.
 
     def put(self, key, item):
         """
-        Add an item in the cache using FIFO algorithm.
+        Add an item in the cache using LIFO algorithm.
 
-        If the cache exceeds MAX_ITEMS, remove the first item added.
+        If the cache exceeds MAX_ITEMS, remove the last item added.
         """
         if key is None or item is None:
             return
