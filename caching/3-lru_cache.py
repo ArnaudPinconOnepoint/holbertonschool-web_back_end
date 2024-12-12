@@ -47,4 +47,3 @@ class LRUCache(BaseCaching):
             self.keys_order.insert(0, key)
             return self.cache_data[key]
         return None
-
