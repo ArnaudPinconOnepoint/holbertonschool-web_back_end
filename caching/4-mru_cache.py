@@ -32,7 +32,7 @@ class MRUCache(BaseCaching):
 
         # If the cache exceeds MAX_ITEMS, evict the MRU item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            lru_key = self.keys_order.pop(0)
+            lru_key = self.keys_order.pop(1)
             del self.cache_data[lru_key]
             print(f"DISCARD: {lru_key}")
 
