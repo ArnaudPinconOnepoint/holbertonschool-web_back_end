@@ -1,6 +1,7 @@
 """ documented the file """
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """FIFO caching system."""
 
@@ -12,7 +13,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """
         Add an item in the cache using FIFO algorithm.
-        
+
         If the cache exceeds MAX_ITEMS, remove the first item added.
         """
         if key is None or item is None:
@@ -36,7 +37,7 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """
         Get an item by key.
-        
+
         Return None if the key is None or does not exist in the cache.
         """
         return self.cache_data.get(key, None)
